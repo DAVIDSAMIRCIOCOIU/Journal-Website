@@ -1,5 +1,8 @@
 body {
     margin: 0;
+    font-family: 'Roboto Slab', serif;;
+    font-weight: 600;
+    background-color: #EDF0F2;
 }
 
 nav {
@@ -8,4 +11,37 @@ nav {
 
 .navbar-brand {
     color: red;
+    margin: 0 20px;
+    font-size: 2rem;
+    padding-right: 30px;
 }
+
+.container-fluid {
+    padding: 0;
+}
+
+
+/* navbar */
+#item-bootstrap-override {
+    margin: 20px;
+}
+
+.pen {
+    background-color: #f9aa33;
+    padding: 15px;
+    border-radius: 50%;
+    color: #232f34 !important;
+}
+
+@media screen and (max-width: 992px){
+    .navbar-expand-lg .navbar-nav .nav-link .pen {
+        margin: 15px 0;
+    }
+
+    .navbar-brand {
+        margin-bottom: 15px;
+    }
+}
+
+
+
