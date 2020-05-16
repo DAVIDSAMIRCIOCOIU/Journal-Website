@@ -34,6 +34,15 @@ app.get("/compose", (req, res) => {
     res.render("compose");
 });
 
+app.post("/delete", (req, res) => {
+    Post.findByIdAndRemove(req.body.buttondelete, function(err) {
+        if(!err) {
+            console.log("Removed");
+            res.redirect("/");
+        }
+    });
+});
+
 app.post("/compose", (req, res) => {
     console.log('I am here');
     const post = new Post( {
