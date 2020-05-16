@@ -57,3 +57,7 @@ nav {
 .container{
     padding: 30px;
 }
+
+.button-delete {
+    font-size: .8rem;
+}
