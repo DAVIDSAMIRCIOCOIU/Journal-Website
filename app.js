@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
+var showToast = require("show-toast");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -23,6 +24,28 @@ app.get("/", (req, res) => {
     const posts = [];
     res.render("body", {posts: posts});
 });
+
+app.get("/compose", (req, res) => {
+    res.render("compose");
+});
+
+app.post("/compose", (req, res) => {
+    const post = new Post( {
+        title: req.body.title,
+        body: req.body.body
+    });
+
+    post.save(function (err) {
+        if(!err) {
+            res.redirect("/");
+            showToast('Your data has been saved!');
+        } else {
+            alert("There's been an error saving your data.");
+            showToast('Error saving data');
+        }
+    });
+});
+
 
 const port = 3000;
 app.listen(port, () => {
