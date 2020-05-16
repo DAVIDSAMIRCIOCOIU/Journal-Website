@@ -8,6 +8,10 @@ body {
 h1, h2, label {
     color: #232f34;
 }
+
+p {
+    font-weight: 200;
+}
 nav {
     background-color: #344955;
 }
@@ -50,6 +54,6 @@ nav {
     }
 }
 
-.container-compose{
+.container{
     padding: 30px;
 }
