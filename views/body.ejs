@@ -2,8 +2,24 @@
 <%- include("partials/navigation"); -%>
 
 <!-- displaying cards with a foreach loop getting them from db -->
-<% posts.forEach(function(post) { %>
-  <h2><%= post.title %></h2>
-  <p><%= post.body %></p>
-<%})%> 
+
+<div class="container">
+  <div class="card-deck text-center">
+    <% posts.forEach(function(post) { %>
+    <div class="card box-shadow">
+      <div class="card-header">
+        <h2><%= post.title %></h2>
+      </div>
+      <div class="card-body">
+        <p><%= post.body %></p>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+      </div>
+    </div>
+    <%})%> 
+    </div>
+  </div>
+
+
 <%- include("partials/footer"); -%>
+
+

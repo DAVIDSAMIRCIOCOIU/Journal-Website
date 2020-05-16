@@ -9,13 +9,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/todolistDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/journal", {useNewUrlParser: true});
 
 
 // Creating Post schema
 const postSchema = new mongoose.Schema({
     title: {type: String, required: true},
-    body: {type: []}
+    body: {type: String}
     
 });
 
@@ -35,6 +35,7 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
+    console.log('I am here');
     const post = new Post( {
         title: req.body.title,
         body: req.body.body
@@ -42,11 +43,12 @@ app.post("/compose", (req, res) => {
 
     post.save(function (err) {
         if(!err) {
+            console.log('Your data has been saved!');
             res.redirect("/");
-            showToast('Your data has been saved!');
+            
         } else {
             alert("There's been an error saving your data.");
-            showToast('Error saving data');
+            console.log('Error saving data');
         }
     });
 });

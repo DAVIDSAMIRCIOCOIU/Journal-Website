@@ -30,7 +30,7 @@ nav {
 }
 
 .pen {
-    background-color: #f9aa33;
+    background-color: #ffc107;
     padding: 15px;
     border-radius: 50%;
     color: #232f34 !important;
@@ -50,13 +50,6 @@ nav {
     }
 }
 
-.compose-form {
+.container-compose{
     padding: 30px;
 }
-
-.save-button {
-    margin-top: 2%;
-}
-
-
-
