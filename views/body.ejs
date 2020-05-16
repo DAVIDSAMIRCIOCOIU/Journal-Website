@@ -1,6 +1,9 @@
-<%- include("partials/header"); -%>
+<%- include("partials/header"); -%> 
 <%- include("partials/navigation"); -%>
 
 <!-- displaying cards with a foreach loop getting them from db -->
-
+<% posts.forEach(function(post) { %>
+  <h2><%= post.title %></h2>
+  <p><%= post.body %></p>
+<%})%> 
 <%- include("partials/footer"); -%>

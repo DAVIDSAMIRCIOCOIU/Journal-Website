@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 var showToast = require("show-toast");
-const date = require(__dirname + "date.js");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -24,7 +23,11 @@ const Post = new mongoose.model("Post", postSchema);
 
 app.get("/", (req, res) => {
     const posts = [];
-    res.render("body", {posts: posts});
+    Post.find({}, function(err, posts) {
+        if(!err) {
+            res.render("body", {posts: posts});
+        }
+    });
 });
 
 app.get("/compose", (req, res) => {

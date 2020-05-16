@@ -2,6 +2,25 @@
 <%- include("partials/navigation"); -%>
 
 <!-- insert cards here -->
-
+<form action="/compose" method="post">
+    <div class="container compose-form">
+        <div class="form-group">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" autofocus required>
+          </div>
+          <div class="card-body">
+            <label>Post</label>
+           
+            <textarea class="form-control" name="post" rows="4" required></textarea>
+            <button type="button" type="submit" name="button" class="btn btn-md btn-warning">Save</button>
+          </div>
+        </div>
+  </div>
+</div>
+</form>
 
 <%- include("partials/footer"); -%>
+
+<!-- Card -->

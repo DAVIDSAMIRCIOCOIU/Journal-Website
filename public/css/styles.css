@@ -5,6 +5,9 @@ body {
     background-color: #EDF0F2;
 }
 
+h1, h2, label {
+    color: #232f34;
+}
 nav {
     background-color: #344955;
 }
@@ -45,6 +48,10 @@ nav {
     .navbar-brand {
         margin-bottom: 15px;
     }
+}
+
+.compose-form {
+    padding: 30px;
 }
 
 
