@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 var showToast = require("show-toast");
+const date = require(__dirname + "date.js");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -16,6 +17,7 @@ mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/
 const postSchema = new mongoose.Schema({
     title: {type: String, required: true},
     body: {type: []}
+    
 });
 
 const Post = new mongoose.model("Post", postSchema);
