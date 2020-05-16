@@ -33,6 +33,10 @@ nav {
     color: #232f34 !important;
 }
 
+.fas.fa-pen.fa-lg:hover {
+    color: white;
+}
+
 @media screen and (max-width: 992px){
     .navbar-expand-lg .navbar-nav .nav-link .pen {
         margin: 15px 0;
