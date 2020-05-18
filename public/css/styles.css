@@ -54,10 +54,21 @@ nav {
     }
 }
 
-.container{
-    padding: 30px;
-}
 
-.button-delete {
+.btn-delete {
     font-size: .8rem;
 }
+
+.row {
+    margin: 30px;
+}
+
+div.col-lg-3.col-md-4 {
+    padding: 15px;
+}
+
+.btn-form {
+    display: inline-block;
+    padding: 10px;
+}
+
