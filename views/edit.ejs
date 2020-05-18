@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+<%- include("partials/navigation"); -%>
+
+<!-- insert cards here -->
+<div class="container text-center container-compose">
+</form>
+
+<form action="/edit/update" method="post">
+    <div class="form-group">
+    <label>Title</label>
+    <input class="form-control" type="text" name="title" value="<%= post.title %>" autofocus required>
+    <label >Post</label>
+    <textarea class="form-control" name="body" rows="4"  required><%=post.body%></textarea>
+    <input type="hidden" name="postId" value="<%= post._id %>">
+</div>
+    <button class="btn btn-warning" type="submit" name="button">Publish</button>
+</form>
+</div>
+
+
+<%- include("partials/footer"); -%>
+
+

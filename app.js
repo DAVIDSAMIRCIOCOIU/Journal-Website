@@ -10,7 +10,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/journal", {useNewUrlParser: true});
-
+mongoose.set('useUnifiedTopology', true);
+mongoose.set('useFindAndModify', false);
 
 // Creating Post schema
 const postSchema = new mongoose.Schema({
@@ -20,6 +21,7 @@ const postSchema = new mongoose.Schema({
 });
 
 const Post = new mongoose.model("Post", postSchema);
+
 
 app.get("/", (req, res) => {
     const posts = [];
@@ -62,6 +64,26 @@ app.post("/compose", (req, res) => {
     });
 });
 
+app.post("/edit", (req, res) => {
+    // When button edit clicked search for the id
+    Post.findOne({_id: req.body.buttonEdit}, function(err, post) {
+        res.render("edit", {post: post});
+       
+    });
+   
+});
+
+app.post("/edit/update", (req, res) => {
+   Post.findOneAndUpdate(
+       {_id: req.body.postId},
+       {title: req.body.title, body: req.body.body},
+       function(err, found) {
+        if(!err){
+            res.redirect("/");
+          }
+       });
+   
+});
 
 
 // Deployed on Heroku
