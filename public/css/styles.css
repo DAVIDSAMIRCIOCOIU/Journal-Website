@@ -15,7 +15,7 @@ p {
 
 /* NAVIGATION BAR */
 nav {
-    background-color: #344955;
+    background-color: #202020;
 }
 
 .navbar-brand {
@@ -25,8 +25,8 @@ nav {
 }
 
 .navbar {
-    padding-bottom: .2rem;
-    padding-top: .2rem;
+    padding-bottom: .1rem;
+    padding-top: .1rem;
 }
 
 #item-bootstrap-override {
@@ -44,6 +44,10 @@ nav {
     color: white;
 }
 
+.row {
+    margin: 30px;
+}
+
 @media screen and (max-width: 992px){
     .navbar-expand-lg .navbar-nav .nav-link .pen {
         margin: 15px 0;
@@ -52,22 +56,22 @@ nav {
     .navbar-brand {
         margin-bottom: 15px;
     }
+
+    .row {
+        margin-right: 2px;
+        margin-left: 2px;
+    }
 }
 
 .container-fluid {
     padding: 0;
 }
 
-
-
-
 .btn-delete {
     font-size: .8rem;
 }
 
-.row {
-    margin: 30px;
-}
+
 
 div.col-lg-3.col-md-4 {
     padding: 15px;
@@ -77,4 +81,6 @@ div.col-lg-3.col-md-4 {
     display: inline-block;
     padding: 10px;
 }
+
+
 
