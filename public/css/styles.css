@@ -12,23 +12,23 @@ h1, h2, label {
 p {
     font-weight: 200;
 }
+
+/* NAVIGATION BAR */
 nav {
     background-color: #344955;
 }
 
 .navbar-brand {
-    color: red;
     margin: 0 20px;
     font-size: 2rem;
     padding-right: 30px;
 }
 
-.container-fluid {
-    padding: 0;
+.navbar {
+    padding-bottom: .2rem;
+    padding-top: .2rem;
 }
 
-
-/* navbar */
 #item-bootstrap-override {
     margin: 20px;
 }
@@ -53,6 +53,12 @@ nav {
         margin-bottom: 15px;
     }
 }
+
+.container-fluid {
+    padding: 0;
+}
+
+
 
 
 .btn-delete {
