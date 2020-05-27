@@ -2,16 +2,28 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
-var showToast = require("show-toast");
+const bcrypt = require('bcrypt');
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
+var flash = require('connect-flash');
+const passport = require("passport");
+const indexRouter = require(`${__dirname}/routes/index`);
+const usersRouter = require(`${__dirname}/routes/users`);
+const controlsRouter = require(`${__dirname}/routes/controls`);
 
 const app = express();
+
+require("./config/passport")();
+
+mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/journal", {useNewUrlParser: true,
+useUnifiedTopology: true,});
+mongoose.set("useCreateIndex", true);
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/journal", {useNewUrlParser: true});
-mongoose.set('useUnifiedTopology', true);
-mongoose.set('useFindAndModify', false);
+app.use(flash());
 
 // Creating Post schema
 const postSchema = new mongoose.Schema({
@@ -20,70 +32,21 @@ const postSchema = new mongoose.Schema({
     
 });
 
-const Post = new mongoose.model("Post", postSchema);
+app.use(
+    cookieSession({
+      maxAge: 14400,
+      keys: ["HELLODEARLPEOPLEFROMYOUTUBE"]
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
 
+  app.use(cookieParser());
 
-app.get("/", (req, res) => {
-    const posts = [];
-    Post.find({}, function(err, posts) {
-        if(!err) {
-            res.render("body", {posts: posts});
-        }
-    });
-});
+  app.use("/", indexRouter);
+  app.use("/users", usersRouter);
+  app.use("/controls", controlsRouter);
 
-app.get("/compose", (req, res) => {
-    res.render("compose");
-});
-
-app.post("/delete", (req, res) => {
-    Post.findByIdAndRemove(req.body.buttondelete, function(err) {
-        if(!err) {
-            console.log("Removed");
-            res.redirect("/");
-        }
-    });
-});
-
-app.post("/compose", (req, res) => {
-    console.log('I am here');
-    const post = new Post( {
-        title: req.body.title,
-        body: req.body.body
-    });
-
-    post.save(function (err) {
-        if(!err) {
-            console.log('Your data has been saved!');
-            res.redirect("/");
-            
-        } else {
-            alert("There's been an error saving your data.");
-            console.log('Error saving data');
-        }
-    });
-});
-
-app.post("/edit", (req, res) => {
-    // When button edit clicked search for the id
-    Post.findOne({_id: req.body.buttonEdit}, function(err, post) {
-        res.render("edit", {post: post});
-       
-    });
-   
-});
-
-app.post("/edit/update", (req, res) => {
-   Post.findOneAndUpdate(
-       {_id: req.body.postId},
-       {title: req.body.title, body: req.body.body},
-       function(err, found) {
-        if(!err){
-            res.redirect("/");
-          }
-       });
-   
-});
 
 
 // Deployed on Heroku
