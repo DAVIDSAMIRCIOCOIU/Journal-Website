@@ -4,8 +4,7 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const bcrypt = require('bcrypt');
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
-const cookieSession = require("cookie-session");
+const session = require('express-session');
 var flash = require('connect-flash');
 const passport = require("passport");
 const indexRouter = require(`${__dirname}/routes/index`);
@@ -32,16 +31,14 @@ const postSchema = new mongoose.Schema({
     
 });
 
-app.use(
-    cookieSession({
-      maxAge: 14400,
-      keys: ["HELLODEARLPEOPLEFROMYOUTUBE"]
-    })
-  );
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
   app.use(passport.initialize());
   app.use(passport.session());
-
-  app.use(cookieParser());
 
   app.use("/", indexRouter);
   app.use("/users", usersRouter);

@@ -34,10 +34,12 @@ module.exports = function() {
     
     // serializer
     passport.serializeUser(function(user, done) {
+      console.log("serialize");
       done(null, user.id);
     });
   
     passport.deserializeUser(function(id, done) {
+      console.log("DEserialize");
       User.findById(id, function(err, user) {
         done(err, user);
       });
