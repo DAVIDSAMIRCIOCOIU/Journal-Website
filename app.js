@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -15,7 +16,7 @@ const app = express();
 
 require("./config/passport")();
 
-mongoose.connect("mongodb+srv://admin-angela:Test123@cluster0-9peap.mongodb.net/journal", {useNewUrlParser: true,
+mongoose.connect(process.env.MONGO_CONNECTION, {useNewUrlParser: true,
 useUnifiedTopology: true,});
 mongoose.set("useCreateIndex", true);
 
