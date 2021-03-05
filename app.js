@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const mongoose = require("mongoose");
 const session = require('express-session');
 var flash = require('connect-flash');
@@ -17,7 +17,11 @@ const app = express();
 require("./config/passport")();
 
 mongoose.connect(process.env.MONGO_CONNECTION, {useNewUrlParser: true,
-useUnifiedTopology: true,});
+useUnifiedTopology: true,}).then(res => {
+  console.log("Connected to db").error((err) => {
+    console.log("failed to connect to db")
+  })
+});
 mongoose.set("useCreateIndex", true);
 
 app.set('view engine', 'ejs');
