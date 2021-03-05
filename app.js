@@ -17,11 +17,7 @@ const app = express();
 require("./config/passport")();
 
 mongoose.connect(process.env.MONGO_CONNECTION, {useNewUrlParser: true,
-useUnifiedTopology: true,}).then(res => {
-  console.log("Connected to db").error((err) => {
-    console.log("failed to connect to db")
-  })
-});
+useUnifiedTopology: true,});
 mongoose.set("useCreateIndex", true);
 
 app.set('view engine', 'ejs');
