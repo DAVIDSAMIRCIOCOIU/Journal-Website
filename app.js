@@ -3,7 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
-const bcrypt = require('bcrypt-nodejs');
 const mongoose = require("mongoose");
 const session = require('express-session');
 var flash = require('connect-flash');
